@@ -30,7 +30,7 @@ func init() {
 }
 
 func main() {
-	fmt.Println("Start Checking LightNovel...")
+	fmt.Println("Start Checking for LightNovels...")
 	for {
 		var date = time.Now()
 		for _, s := range Settings {
