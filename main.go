@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -29,7 +30,7 @@ func init() {
 }
 
 func main() {
-
+	fmt.Println("Start Checking LightNovel...")
 	for {
 		var date = time.Now()
 		for _, s := range Settings {
