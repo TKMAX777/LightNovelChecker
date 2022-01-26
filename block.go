@@ -11,7 +11,7 @@ func NewMessageBlock(books []LightNovelBookInfo, date time.Time) []slack_webhook
 	var blocks = []slack_webhook.BlockBase{}
 
 	var title = slack_webhook.SectionBlock()
-	title.Text = slack_webhook.MrkdwnElement(date.Format("1月2日出版のラノベ"))
+	title.Text = slack_webhook.MrkdwnElement(date.Format("1月2日出版のライトノベル"))
 
 	blocks = append(blocks, title)
 

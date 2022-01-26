@@ -50,7 +50,7 @@ func main() {
 			var slack = slack_webhook.New(os.Getenv("SLACK_TOKEN"))
 			_, err = slack.Send(slack_webhook.Message{
 				Channel:     os.Getenv("SLACK_CHANNEL"),
-				Text:        date.Format("1月2日出版のラノベ"),
+				Text:        date.Format("1月2日出版のライトノベル"),
 				Blocks:      NewMessageBlock(books, date),
 				UnfurlLinks: false,
 			})
