@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strconv"
@@ -14,6 +15,7 @@ const LightNovelCalenderURI = "https://calendar.gameiroiro.com/litenovel.php"
 type LightNovelCalender [][]LightNovelBookInfo
 
 type LightNovelBookInfo struct {
+	Month     int
 	Day       int
 	Type      string
 	Title     string
@@ -23,8 +25,8 @@ type LightNovelBookInfo struct {
 	Publisher string
 }
 
-func NewLightNovelCalender() (LightNovelCalender, error) {
-	resp, err := http.Get(LightNovelCalenderURI)
+func NewLightNovelCalender(year, month int) (LightNovelCalender, error) {
+	resp, err := http.Get(fmt.Sprintf(LightNovelCalenderURI+"?year=%d&month=%d", year, month))
 	if err != nil {
 		return nil, errors.Wrap(err, "Request")
 	}

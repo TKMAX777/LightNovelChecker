@@ -29,16 +29,19 @@ func init() {
 }
 
 func main() {
-	calender, err := NewLightNovelCalender()
-	if err != nil {
-		log.Println(err.Error())
-	}
 
 	for {
 		var date = time.Now()
 		for _, s := range Settings {
 			if date.Hour() != s.Hour || date.Minute() != s.Minute {
 				continue
+			}
+
+			date = date.AddDate(0, 0, s.Delta)
+
+			calender, err := NewLightNovelCalender(date.Year(), int(date.Month()))
+			if err != nil {
+				log.Println(err.Error())
 			}
 
 			books := calender.DayBooks(date.Day())
