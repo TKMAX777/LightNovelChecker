@@ -38,20 +38,20 @@ func main() {
 				continue
 			}
 
-			date = date.AddDate(0, 0, s.Delta)
+			var getDate = date.AddDate(0, 0, s.Delta)
 
-			calender, err := NewLightNovelCalender(date.Year(), int(date.Month()))
+			calender, err := NewLightNovelCalender(getDate.Year(), int(getDate.Month()))
 			if err != nil {
 				log.Println(err.Error())
 			}
 
-			books := calender.DayBooks(date.Day())
+			books := calender.DayBooks(getDate.Day())
 
 			var slack = slack_webhook.New(os.Getenv("SLACK_TOKEN"))
 			_, err = slack.Send(slack_webhook.Message{
 				Channel:     os.Getenv("SLACK_CHANNEL"),
-				Text:        date.Format("1月2日出版のライトノベル"),
-				Blocks:      NewMessageBlock(books, date),
+				Text:        getDate.Format("1月2日出版のライトノベル"),
+				Blocks:      NewMessageBlock(books, getDate),
 				UnfurlLinks: false,
 			})
 
