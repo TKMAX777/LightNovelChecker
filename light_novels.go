@@ -73,12 +73,12 @@ func NewLightNovelCalender(year, month int) (LightNovelCalender, error) {
 
 			dayBook.Type = strings.TrimSpace(strings.SplitN(tmps[1], `</span>`, 2)[0])
 
+			// parse book URI
 			tmps = strings.Split(book, AmazonDBURI)
 			if len(tmps) < 3 {
 				continue
 			}
 
-			// parse book URI
 			dayBook.AmazonURI = strings.TrimSpace(strings.SplitN(tmps[2], "?tag=game-calendar", 2)[0])
 			dayBook.AmazonURI = AmazonDBURI + dayBook.AmazonURI
 
